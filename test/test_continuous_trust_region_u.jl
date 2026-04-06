@@ -2,6 +2,7 @@
 
 using Clarabel
 using JuMP
+using Test
 
 if !@isdefined SCPLib
     include(joinpath(@__DIR__, "../src/SCPLib.jl"))
