@@ -93,7 +93,7 @@ function set_trust_region_constraints!(
 
     if algo.use_trustregion_control
         Nu = size(u_ref, 2)
-        @assert size(algo.tr_u.Δ, 2) >= Nu "Control trust-region horizon is shorter than the control reference horizon"
+        @assert size(algo.tr_u.Δ, 2) >= Nu "Control trust-region horizon is too short for the control reference horizon"
         @constraint(prob.model, constraint_trust_region_u_lb[k in 1:Nu],
             -(prob.model[:u][:,k] - u_ref[:,k]) <= algo.tr_u.Δ[:,k])
         @constraint(prob.model, constraint_trust_region_u_ub[k in 1:Nu],
